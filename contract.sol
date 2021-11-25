@@ -68,7 +68,7 @@ contract driver {
 
   uint init_member_counter = 1;
 
-  //assigns initial members
+  //Function that only allows to initiate the 4 initial members 
   function init_members(uint _ID) {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
