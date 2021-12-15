@@ -28,7 +28,7 @@ contract microloan {
     address sponsor_4;
 
   }
-
+ uint CurrentTime;
   //maps address to the member structure
   mapping (address => member) link;
 
@@ -38,6 +38,21 @@ contract microloan {
   address var2;
   address var3;
   address var4;
+//TODO: Change the event names
+  // when member is added
+  event SomeoneTriedToAddSomeone(address personWhoTried,address personWhoWasAdded);
+  // when money is deposited
+  event SomeoneAddedMoneyToThePool(address personWhoSent,uint moneySent);
+  // when requested for loan
+  event SomeoneRequestedMoney(address personWhoRequested,uint requestedM);
+
+  //resets counter for new member
+  function onlynew(address newadd){
+
+      if(link[newadd].sponsor_1==0x0)
+        count=1;
+
+  }
 
   function () payable{
   }
