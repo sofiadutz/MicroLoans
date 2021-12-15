@@ -133,6 +133,7 @@ contract microloan {
 //requested money mapped to member address
   mapping (uint => address) amount_map;
 
+//TODO: Add modifier to prevent pooling too many times or too early
   modifier onlymember()
   {
       //TODO: check the flag instead of the sponsors number
@@ -155,8 +156,100 @@ contract microloan {
    SomeoneRequestedMoney(msg.sender,_amount_);
   }
 
+  uint temp;
+// TODO: Not sure if we need this buble_sort
+  function bubble_sort(){
 
+    for(uint j=0;j<amounts.length-1;j++){
 
+      for(uint k=0;k<amounts.length-j-1;k++){
+
+        if(amounts[k]>amounts[k+1]){
+
+          temp = amounts[k];
+          amounts[k] = amounts[k+1];
+          amounts[k+1] = temp;
+
+        }
+      }
+    }
+  }
+
+  uint sum;
+
+  uint t;
+
+  uint counter_sum=0;
+//Total distributable money from the pool
+  function assign_loan() constant returns (uint){
+
+    sum = 0;
+
+   for(t=0;t<amounts.length;t++){
+
+    if(sum<=amounts[t]){
+
+        sum=sum+amounts[t];
+         counter_sum = t;
+
+    }
+   }
+
+   return sum;
+
+  }
+
+  function check_time(address ad1) constant returns(uint)
+  {
+      return(link[ad1].addtime);
+  }
+//Address of members who will receive loan
+  function BorrowersList() public constant returns(address[]){
+
+    uint length = amounts.length;
+    address[] memory addr = new address[](length);
+
+    for(uint q=0; q <= counter_sum; q++ ){
+
+      addr[q] = amount_map[amounts[q]];
+
+    }
+
+    return addr ;
+  }
+
+  address temp_address;
+//Check if the month is end of three months cycle
+  modifier every_3_months {
+
+    uint months=(now-TimeStart)/(24*60*60*30);
+    if(months%3==0)
+    {
+        _;
+    }
+    else
+    {
+        throw;
+    }
+
+  }
+//Pay the members the requested loan amount
+  function pay_loan() public every_3_months {
+
+    for(uint w=0; w <= counter_sum; w++ ){
+
+      temp_address = amount_map[amounts[w]];
+      temp_address.transfer(amounts[w]);
+
+    }
+  }
+
+ function getCurrentTime() public constant returns(uint)
+  {
+
+      currtime=now;
+      return currtime;
+  }
 
   function () payable{
   }
