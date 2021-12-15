@@ -247,8 +247,8 @@ contract microloan {
  function getCurrentTime() public constant returns(uint)
   {
 
-      currtime=now;
-      return currtime;
+      CurrentTime=now;
+      return CurrentTime;
   }
 
   function () payable{
