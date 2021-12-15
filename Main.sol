@@ -68,6 +68,36 @@ contract microloan {
 
   }
 
+   //validates new member by sponsors
+  function add_Member(address _req_member,uint __ID) {
+
+    onlynew(_req_member);
+
+    if(count==1)
+    {user_ID[__ID]=_req_member;
+      var1=msg.sender;
+      link[_req_member]=member(now,count,_req_member,__ID,var1,0,0,0);
+    }
+    else if (count==2)
+    {
+      link[_req_member].sponsor_2=msg.sender;
+    }
+    else if (count==3)
+    {
+      link[_req_member].sponsor_3=msg.sender;
+    }
+
+    else if (count==4)
+    {
+      link[_req_member].sponsor_4=msg.sender;
+    }
+
+    count++;
+
+    SomeoneTriedToAddSomeone(msg.sender,_req_member);
+
+  }
+
   function () payable{
   }
 
