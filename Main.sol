@@ -67,9 +67,19 @@ contract microloan {
     }
 
   }
+  //check eligibility of member for payments
+  modifier check_num_sponsors(address _check_address) {
 
+    if(link[_check_address].counter < 4){
+      throw;
+    }
+    else{
+      _;
+    }
+
+  }
    //validates new member by sponsors
-  function add_Member(address _req_member,uint __ID) {
+  function add_Member(address _req_member,uint __ID) check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
 
