@@ -1,6 +1,12 @@
 pragma solidity ^0.4.0;
 
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
+
 contract microloan {
+
+  using SafeMath for uint;
+
   uint TimeStart; //time stamp of the block
   //constructor
   function microloan() public payable {
