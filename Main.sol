@@ -133,9 +133,22 @@ contract microloan {
 //requested money mapped to member address
   mapping (uint => address) amount_map;
 
+  modifier onlymember()
+  {
+      //TODO: check the flag instead of the sponsors number
+      uint memcount=link[msg.sender].counter;
+      if(memcount >= 4)
+      {
+        _;
+      }
+      else
+      {
+          throw;
+      }
+  }
 //To request money from the pool
-  function req_Money(uint _amount_) {
-
+  function whitdraw(uint _amount_) {
+//TODO: add penalty when withdrawing
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
