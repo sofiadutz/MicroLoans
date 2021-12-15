@@ -107,10 +107,7 @@ contract microloan {
     SomeoneTriedToAddSomeone(msg.sender,_req_member);
 
   }
-
-  function () payable{
-  }
-
+  
   //deposit money in the pool
   //TODO: Change the name of the event
   function deposit(uint __amount) payable {
@@ -119,4 +116,14 @@ contract microloan {
     SomeoneAddedMoneyToThePool(msg.sender,__amount);
 
   }
+    //shows the money in the pool
+  function getPoolMoney() constant returns (uint){
+
+    return this.balance;
+
+  }
+
+  function () payable{
+  }
+
 }
