@@ -39,6 +39,7 @@ contract microloan {
   address var3;
   address var4;
 
-
+  function () payable{
+  }
 
 }
