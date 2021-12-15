@@ -29,6 +29,7 @@ contract microloan {
 
   }
  uint CurrentTime;
+ uint init_member_counter = 1;
   //maps address to the member structure
   mapping (address => member) link;
 
@@ -51,6 +52,19 @@ contract microloan {
 
       if(link[newadd].sponsor_1==0x0)
         count=1;
+
+  }
+  //Function that only allows to initiate the 4 initial members 
+  //TODO: Should add an Ownable modifier from Zeppelin
+  function init_members(uint _ID) {
+    user_ID[_ID]=msg.sender;
+    if(init_member_counter <5){
+      link[msg.sender]=member(now,4,msg.sender,_ID,0x1,0x2,0x3,0x4);
+      init_member_counter++;
+    }
+    else{
+      throw;
+    }
 
   }
 
