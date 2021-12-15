@@ -1,9 +1,9 @@
 pragma solidity ^0.4.0;
 
-contract driver {
+contract microloan {
   uint TimeStart; //time stamp of the block
   //constructor
-  function driver() public payable {
+  function microloan() public payable {
       TimeStart=now;
 
   }
@@ -12,6 +12,8 @@ contract driver {
   mapping(uint=>address)user_ID;
 
   //structure of member
+  //TODO: add deposit monet attr
+  //TODO: add state of the member: Borrower or Lender
   struct member {
 
     uint addtime;
@@ -19,7 +21,7 @@ contract driver {
 
     address member_address;
     uint ID;
-    //for refrences of the member
+    //TODO: Replace the addresees with an array of them
     address sponsor_1;
     address sponsor_2;
     address sponsor_3;
@@ -31,7 +33,7 @@ contract driver {
   mapping (address => member) link;
 
   uint count=1;
-
+  //TODO: Replace the addresees with an array of them
   address var1;
   address var2;
   address var3;
