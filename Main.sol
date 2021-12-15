@@ -111,4 +111,12 @@ contract microloan {
   function () payable{
   }
 
+  //deposit money in the pool
+  //TODO: Change the name of the event
+  function deposit(uint __amount) payable {
+
+    this.transfer(__amount);
+    SomeoneAddedMoneyToThePool(msg.sender,__amount);
+
+  }
 }
