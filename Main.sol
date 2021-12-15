@@ -123,6 +123,28 @@ contract microloan {
 
   }
 
+    //show ID refrences of a member
+  function list_refrences(address _master_address) constant returns (uint,uint,uint,uint) {
+
+    return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID);
+
+  }
+  uint[] public amounts;
+//requested money mapped to member address
+  mapping (uint => address) amount_map;
+
+//To request money from the pool
+  function req_Money(uint _amount_) {
+
+    amounts.push(_amount_);
+    amount_map[_amount_] = msg.sender;
+
+   SomeoneRequestedMoney(msg.sender,_amount_);
+  }
+
+
+
+
   function () payable{
   }
 
