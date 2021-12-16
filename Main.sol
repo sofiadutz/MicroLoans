@@ -18,7 +18,6 @@ contract microloan is Ownable {
   mapping(uint=>address)user_ID;
 
   //structure of member
-  //TODO: add deposit monet attr
   //TODO: add state of the member: Borrower or Lender
   struct member {
 
@@ -27,6 +26,9 @@ contract microloan is Ownable {
 
     address member_address;
     uint ID;
+    
+    uint deposit;
+    
     //TODO: Replace the addresees with an array of them
     address sponsor_1;
     address sponsor_2;
@@ -161,6 +163,7 @@ contract microloan is Ownable {
 
    emit LoanRequest(msg.sender,_amount_);
   }
+  
 
   uint temp;
 // TODO: Not sure if we need this buble_sort
@@ -249,6 +252,23 @@ contract microloan is Ownable {
 
     }
   }
+  
+//for lenders to withdraw their interest
+
+  function withdraw_interest(lender) public every_3_months {
+  
+  uint public Periods = 3;
+  uint public Interest;
+  uint public InterestRateInteger = 2
+  uint Principle = link[member].deposit
+  
+  Interest = (Principle * (1 + InterestRateInteger/100)**Periods) - Principle;
+  msg.sender.transfer(Interest);
+  
+  
+  }
+
+
 
  function getCurrentTime() public constant returns(uint)
   {
