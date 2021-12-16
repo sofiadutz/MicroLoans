@@ -3,7 +3,7 @@ pragma solidity ^0.4.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
 
-contract microloan {
+contract microloan is Ownable {
 
   using SafeMath for uint;
 
@@ -62,7 +62,7 @@ contract microloan {
   }
   //Function that only allows to initiate the 4 initial members 
   //TODO: Should add an Ownable modifier from Zeppelin
-  function init_members(uint _ID) {
+  function init_members(uint _ID) onlyOwner {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
       link[msg.sender]=member(now,4,msg.sender,_ID,0x1,0x2,0x3,0x4);
