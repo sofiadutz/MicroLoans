@@ -47,11 +47,11 @@ contract microloan {
   address var4;
 //TODO: Change the event names
   // when member is added
-  event SomeoneTriedToAddSomeone(address personWhoTried,address personWhoWasAdded);
+  event NewMemberSponsored(address Sponsor,address new_member);
   // when money is deposited
-  event SomeoneAddedMoneyToThePool(address personWhoSent,uint moneySent);
+  event Deposit(address sender,uint amount);
   // when requested for loan
-  event SomeoneRequestedMoney(address personWhoRequested,uint requestedM);
+  event LoanRequest(address borrower,uint amount);
 
   //resets counter for new member
   function onlynew(address newadd){
@@ -110,7 +110,7 @@ contract microloan {
 
     count++;
 
-    SomeoneTriedToAddSomeone(msg.sender,_req_member);
+    emit NewMemberSponsored(msg.sender,_req_member);
 
   }
   
@@ -119,7 +119,7 @@ contract microloan {
   function deposit(uint __amount) payable {
 
     this.transfer(__amount);
-    SomeoneAddedMoneyToThePool(msg.sender,__amount);
+    emit Deposit(msg.sender,__amount);
 
   }
     //shows the money in the pool
@@ -159,7 +159,7 @@ contract microloan {
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
-   SomeoneRequestedMoney(msg.sender,_amount_);
+   emit LoanRequest(msg.sender,_amount_);
   }
 
   uint temp;
