@@ -18,7 +18,10 @@ contract microloan is Ownable {
   mapping(uint=>address)user_ID;
 
   //structure of member
+  
   //TODO: add state of the member: Borrower or Lender
+  // the state is defined by the add_member function: if the requirement of the 4 sponsors is satisfied, the member is borrower, else is lender
+  
   struct member {
 
     uint addtime;
@@ -30,6 +33,7 @@ contract microloan is Ownable {
     uint deposit;
     
     //TODO: Replace the addresees with an array of them
+    // allow for the possibility of having more than 4 sponsors
     address sponsor_1;
     address sponsor_2;
     address sponsor_3;
@@ -47,12 +51,13 @@ contract microloan is Ownable {
   address var2;
   address var3;
   address var4;
-//TODO: Change the event names
+
+
   // when member is added
   event NewMemberSponsored(address Sponsor,address new_member);
   // when money is deposited
   event Deposit(address sender,uint amount);
-  // when requested for loan
+  // when loan is requested
   event LoanRequest(address borrower,uint amount);
 
   //resets counter for new member
@@ -63,7 +68,7 @@ contract microloan is Ownable {
 
   }
   //Function that only allows to initiate the 4 initial members 
-  //TODO: Should add an Ownable modifier from Zeppelin
+  //TODO: Should add an Ownable modifier from Zeppelin so that only we can call this function
   function init_members(uint _ID) onlyOwner {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
@@ -87,6 +92,7 @@ contract microloan is Ownable {
 
   }
    //validates new member by sponsors
+   //TODO: modify so that a new memeber who wants to be lender can enter without the 4 sponsors
   function add_Member(address _req_member,uint __ID) check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
@@ -117,7 +123,6 @@ contract microloan is Ownable {
   }
   
   //deposit money in the pool
-  //TODO: Change the name of the event
   function deposit(uint __amount) payable {
 
     this.transfer(__amount);
@@ -157,7 +162,6 @@ contract microloan is Ownable {
   }
 //To request money from the pool
   function whitdraw(uint _amount_) {
-//TODO: add penalty when withdrawing
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
@@ -254,6 +258,7 @@ contract microloan is Ownable {
   }
   
 //for lenders to withdraw their interest
+// TODO: modify so that the person who calls this function is a lender and can access to the interest associated with its initial deposit invested
 
   function withdraw_interest(lender) public every_3_months {
   
