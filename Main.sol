@@ -32,6 +32,8 @@ contract microloan is Ownable {
     
     uint deposit;
     
+    bool borrower;
+    
     //TODO: Replace the addresees with an array of them
     // allow for the possibility of having more than 4 sponsors
     address sponsor_1;
