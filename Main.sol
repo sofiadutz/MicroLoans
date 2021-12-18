@@ -124,6 +124,12 @@ contract microloan is Ownable {
 
   }
   
+  function add_Lender(address _req_member, uint __ID) {
+  onlynew(_req_member);
+  user_ID[__ID]=_req_member;
+  link[_req_member]=member(now,count,_req_member,__ID,0,True,0,0,0,0);
+  }
+  
   //deposit money in the pool
   function deposit(uint __amount) payable {
 
