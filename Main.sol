@@ -270,9 +270,9 @@ contract microloan is Ownable {
 
   function withdraw_interest(lender) public every_3_months {
   
-  uint public Periods = 3;
-  uint public Interest;
-  uint public InterestRateInteger = 2
+  uint Periods = 3;
+  uint Interest;
+  uint InterestRateInteger = 2
   uint Principle = link[member].deposit
   
   Interest = (Principle * (1 + InterestRateInteger/100)**Periods) - Principle;
