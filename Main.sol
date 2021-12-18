@@ -74,7 +74,7 @@ contract microloan is Ownable {
   function init_members(uint _ID) onlyOwner {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0x1,0x2,0x3,0x4);
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,True,0x1,0x2,0x3,0x4);
       init_member_counter++;
     }
     else{
@@ -102,7 +102,7 @@ contract microloan is Ownable {
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,var1,0,0,0);
+      link[_req_member]=member(now,count,_req_member,__ID,0,False,var1,0,0,0);
     }
     else if (count==2)
     {
