@@ -1,9 +1,8 @@
 pragma solidity ^0.4.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
 
-contract microloan is Ownable {
+contract microloan {
 
   using SafeMath for uint;
 
@@ -18,10 +17,6 @@ contract microloan is Ownable {
   mapping(uint=>address)user_ID;
 
   //structure of member
-  
-  //TODO: add state of the member: Borrower or Lender
-  // the state is defined by the add_member function: if the requirement of the 4 sponsors is satisfied, the member is borrower, else is lender
-  
   struct member {
 
     uint addtime;
@@ -70,11 +65,10 @@ contract microloan is Ownable {
 
   }
   //Function that only allows to initiate the 4 initial members 
-  //TODO: Should add an Ownable modifier from Zeppelin so that only we can call this function
-  function init_members(uint _ID) onlyOwner {
+  function init_members(uint _ID) {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0,True,0x1,0x2,0x3,0x4);
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,true,0x1,0x2,0x3,0x4);
       init_member_counter++;
     }
     else{
@@ -94,7 +88,7 @@ contract microloan is Ownable {
 
   }
    //validates new member by sponsors
-   //TODO: modify so that a new memeber who wants to be lender can enter without the 4 sponsors
+ 
   function add_Member(address _req_member,uint __ID) check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
@@ -102,7 +96,7 @@ contract microloan is Ownable {
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,0,False,var1,0,0,0);
+      link[_req_member]=member(now,count,_req_member,__ID,0,false,var1,0,0,0);
     }
     else if (count==2)
     {
@@ -127,7 +121,7 @@ contract microloan is Ownable {
   function add_Lender(address _req_member, uint __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,True,0,0,0,0);
+  link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
   }
   
   //deposit money in the pool
