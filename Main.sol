@@ -1,7 +1,7 @@
 pragma solidity ^0.4.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/contracts/math/SafeMath.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
 
 contract microloan is Ownable {
 
@@ -272,8 +272,8 @@ contract microloan is Ownable {
   
   uint Periods = 3;
   uint Interest;
-  uint InterestRateInteger = 2
-  uint Principle = link[lender].deposit
+  uint InterestRateInteger = 2;
+  uint Principle = link[lender].deposit;
   
   Interest = (Principle * (1 + InterestRateInteger/100)**Periods) - Principle;
   msg.sender.transfer(Interest);
