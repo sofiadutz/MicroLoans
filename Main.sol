@@ -273,7 +273,7 @@ contract microloan is Ownable {
   uint Periods = 3;
   uint Interest;
   uint InterestRateInteger = 2
-  uint Principle = link[member].deposit
+  uint Principle = link[lender].deposit
   
   Interest = (Principle * (1 + InterestRateInteger/100)**Periods) - Principle;
   msg.sender.transfer(Interest);
