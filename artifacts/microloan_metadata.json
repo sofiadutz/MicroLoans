@@ -29,6 +29,24 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"name": "__ID",
+						"type": "uint256"
+					}
+				],
+				"name": "add_Lender",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getPoolMoney",
@@ -166,6 +184,20 @@
 				"constant": false,
 				"inputs": [
 					{
+						"name": "lender",
+						"type": "address"
+					}
+				],
+				"name": "withdraw_interest",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
 						"name": "__amount",
 						"type": "uint256"
 					}
@@ -238,16 +270,16 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"name": "personWhoTried",
+						"name": "Sponsor",
 						"type": "address"
 					},
 					{
 						"indexed": false,
-						"name": "personWhoWasAdded",
+						"name": "new_member",
 						"type": "address"
 					}
 				],
-				"name": "SomeoneTriedToAddSomeone",
+				"name": "NewMemberSponsored",
 				"type": "event"
 			},
 			{
@@ -255,16 +287,16 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"name": "personWhoSent",
+						"name": "sender",
 						"type": "address"
 					},
 					{
 						"indexed": false,
-						"name": "moneySent",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "SomeoneAddedMoneyToThePool",
+				"name": "Deposit",
 				"type": "event"
 			},
 			{
@@ -272,16 +304,16 @@
 				"inputs": [
 					{
 						"indexed": false,
-						"name": "personWhoRequested",
+						"name": "borrower",
 						"type": "address"
 					},
 					{
 						"indexed": false,
-						"name": "requestedM",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "SomeoneRequestedMoney",
+				"name": "LoanRequest",
 				"type": "event"
 			}
 		],
@@ -294,7 +326,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Main.sol": "microloan"
+			"Users/liuxiaoxu/Desktop/SecondSemester/nlp/MicroLoans/Main.sol": "microloan"
 		},
 		"evmVersion": "byzantium",
 		"libraries": {},
@@ -305,10 +337,10 @@
 		"remappings": []
 	},
 	"sources": {
-		"Main.sol": {
-			"keccak256": "0xc61f96c704ee25c87fcbcd429241e493b700cf43b6856d449dfc372a84d8fa5e",
+		"Users/liuxiaoxu/Desktop/SecondSemester/nlp/MicroLoans/Main.sol": {
+			"keccak256": "0xf045cb4cbecb4e3a2e93880cc91a99a35f11a9f30c674b5bb511ba29bed41a60",
 			"urls": [
-				"bzzr://1daa9b56beb5bec56e17a11965bf24d83d796512d18571cb057e28fbdd979547"
+				"bzzr://e7f495a5a355481f54dbb3a8fdb40d47865fe5ad31143eb84dd7732a1ab1b50f"
 			]
 		}
 	},

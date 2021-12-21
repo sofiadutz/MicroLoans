@@ -1,10 +1,13 @@
 pragma solidity ^0.4.0;
+pragma solidity ^0.4.1;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
+//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
 
 contract microloan {
 
   using SafeMath for uint;
+  //using SafeMath for uint;
 
   uint TimeStart; //time stamp of the block
   //constructor
@@ -115,7 +118,6 @@ contract microloan {
 
     count++;
 
-    emit NewMemberSponsored(msg.sender,_req_member);
 
   }
   
@@ -129,7 +131,6 @@ contract microloan {
   function deposit(uint __amount) payable {
 
     this.transfer(__amount);
-    emit Deposit(msg.sender,__amount);
 
   }
     //shows the money in the pool
@@ -168,7 +169,6 @@ contract microloan {
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
-   emit LoanRequest(msg.sender,_amount_);
   }
   
 
