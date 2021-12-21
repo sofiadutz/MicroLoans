@@ -267,7 +267,7 @@ contract microloan {
       
       temp_address.transfer(amounts[w]);}
       else {
-        throw;
+        revert();
       }
 
     }
