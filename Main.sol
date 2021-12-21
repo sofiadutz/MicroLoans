@@ -76,7 +76,7 @@ contract microloan {
       init_member_counter++;
     }
     else{
-      throw;
+      revert();
     }
 
   }
@@ -84,7 +84,7 @@ contract microloan {
   modifier check_num_sponsors(address _check_address) {
 
     if(link[_check_address].counter < 4){
-      throw;
+      revert();
     }
     else{
       _;
@@ -161,7 +161,7 @@ contract microloan {
       }
       else
       {
-          throw;
+          revert();
       }
   }
 //To request money from the pool
@@ -245,7 +245,7 @@ contract microloan {
     }
     else
     {
-        throw;
+        revert();
     }
 
   }
