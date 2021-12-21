@@ -17,7 +17,7 @@ contract microloan {
   }
 
   //links individual ID to address
-  mapping(uint=>address)user_ID;
+  mapping(string=>address)user_ID;
 
   //structure of member
   struct member {
@@ -26,7 +26,7 @@ contract microloan {
     uint counter;
 
     address member_address;
-    uint ID;
+    string ID;
     
     uint deposit;
     
@@ -69,7 +69,7 @@ contract microloan {
 
   }
   //Function that only allows to initiate the 4 initial members 
-  function init_members(uint _ID) {
+  function init_members(string _ID) {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
       link[msg.sender]=member(now,4,msg.sender,_ID,0,true,0x1,0x2,0x3,0x4);
@@ -93,7 +93,7 @@ contract microloan {
   }
    //validates new member by sponsors
  
-  function add_Member(address _req_member,uint __ID) check_num_sponsors(msg.sender) {
+  function add_Member(address _req_member,string __ID) check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
 
@@ -121,7 +121,7 @@ contract microloan {
 
   }
   
-  function add_Lender(address _req_member, uint __ID) {
+  function add_Lender(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
   link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
@@ -129,7 +129,7 @@ contract microloan {
   
 
   //add recommender as member, in order to check collateral availability
-  function add_recmd(address _req_member, uint __ID) {
+  function add_recmd(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
   link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
