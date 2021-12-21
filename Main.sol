@@ -56,6 +56,7 @@ contract microloan {
   event Deposit(address sender,uint amount);
   // when loan is requested
   event LoanRequest(address borrower,uint amount);
+  event LoanRequest(address borrower, uint amount);
 
   //resets counter for new member
   function onlynew(address newadd){
@@ -248,6 +249,12 @@ contract microloan {
     }
 
   }
+//TODO: Check if the four recommender's deposit covers the loan
+  modifier ref_gurantee_enough {
+
+
+  }
+
 //Pay the members the requested loan amount
   function pay_loan() public every_3_months {
 
