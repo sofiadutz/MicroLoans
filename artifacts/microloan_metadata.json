@@ -97,6 +97,24 @@
 				"constant": false,
 				"inputs": [
 					{
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"name": "__ID",
+						"type": "uint256"
+					}
+				],
+				"name": "add_recmd",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
 						"name": "newadd",
 						"type": "address"
 					}
@@ -338,9 +356,9 @@
 	},
 	"sources": {
 		"Users/liuxiaoxu/Desktop/SecondSemester/nlp/MicroLoans/Main.sol": {
-			"keccak256": "0xf045cb4cbecb4e3a2e93880cc91a99a35f11a9f30c674b5bb511ba29bed41a60",
+			"keccak256": "0xa689a897fa7ad36f3ab1924eb476410dae55f5fc92348bf7eb6be1c2f0c887f6",
 			"urls": [
-				"bzzr://e7f495a5a355481f54dbb3a8fdb40d47865fe5ad31143eb84dd7732a1ab1b50f"
+				"bzzr://6cf4ba753fbfa679d088b98a59a1a92e103f2f0cbe23212c2e7d15ca6b0e8c41"
 			]
 		}
 	},

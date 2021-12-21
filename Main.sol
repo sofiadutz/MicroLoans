@@ -249,19 +249,26 @@ contract microloan {
     }
 
   }
-//TODO: Check if the four recommender's deposit covers the loan
-  modifier ref_gurantee_enough {
-
-
-  }
 
 //Pay the members the requested loan amount
+//Check if the four recommender's deposit covers the loan
   function pay_loan() public every_3_months {
 
     for(uint w=0; w <= counter_sum; w++ ){
-
       temp_address = amount_map[amounts[w]];
-      temp_address.transfer(amounts[w]);
+
+      uint total_recmd = (link[link[temp_address].sponsor_1].deposit + 
+      link[link[temp_address].sponsor_2].deposit + 
+      link[link[temp_address].sponsor_3].deposit + 
+      link[link[temp_address].sponsor_4].deposit);
+
+      if (total_recmd >= amounts[w]) {
+
+      
+      temp_address.transfer(amounts[w]);}
+      else {
+        throw;
+      }
 
     }
   }
