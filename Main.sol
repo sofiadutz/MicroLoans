@@ -127,6 +127,14 @@ contract microloan {
   link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
   }
   
+
+  //add recommender as member, in order to check collateral availability
+  function add_recmd(address _req_member, uint __ID) {
+  onlynew(_req_member);
+  user_ID[__ID]=_req_member;
+  link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
+  }
+
   //deposit money in the pool
   function deposit(uint __amount) payable {
 
