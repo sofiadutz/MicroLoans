@@ -108,13 +108,17 @@ contract microloan {
     else if (count==4)
     {
       link[_req_member].sponsor_4=msg.sender;
+      link[_req_member].counter=4;
     }
 
     count++;
 
 
   }
-  
+  function show_count(address _master_address) constant returns (uint) {
+
+    return (link[msg.sender].counter);
+  }
   function add_Lender(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;

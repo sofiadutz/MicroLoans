@@ -15,6 +15,15 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [],
+				"name": "time",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getCurrentTime",
@@ -26,24 +35,6 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_req_member",
-						"type": "address"
-					},
-					{
-						"name": "__ID",
-						"type": "uint256"
-					}
-				],
-				"name": "add_Lender",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -75,37 +66,14 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "amounts",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
-						"name": "_req_member",
+						"name": "newadd",
 						"type": "address"
-					},
-					{
-						"name": "__ID",
-						"type": "uint256"
 					}
 				],
-				"name": "add_recmd",
+				"name": "onlynew",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -115,11 +83,11 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "newadd",
-						"type": "address"
+						"name": "_ID",
+						"type": "string"
 					}
 				],
-				"name": "onlynew",
+				"name": "init_members",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -137,19 +105,19 @@
 				"outputs": [
 					{
 						"name": "",
-						"type": "uint256"
+						"type": "string"
 					},
 					{
 						"name": "",
-						"type": "uint256"
+						"type": "string"
 					},
 					{
 						"name": "",
-						"type": "uint256"
+						"type": "string"
 					},
 					{
 						"name": "",
-						"type": "uint256"
+						"type": "string"
 					}
 				],
 				"payable": false,
@@ -161,8 +129,8 @@
 				"inputs": [],
 				"name": "pay_loan",
 				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
+				"payable": true,
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -177,6 +145,24 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"name": "__ID",
+						"type": "string"
+					}
+				],
+				"name": "add_Member",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -202,6 +188,24 @@
 				"constant": false,
 				"inputs": [
 					{
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"name": "__ID",
+						"type": "string"
+					}
+				],
+				"name": "add_Lender",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
 						"name": "lender",
 						"type": "address"
 					}
@@ -210,6 +214,25 @@
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_count",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -235,24 +258,10 @@
 					},
 					{
 						"name": "__ID",
-						"type": "uint256"
+						"type": "string"
 					}
 				],
-				"name": "add_Member",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_ID",
-						"type": "uint256"
-					}
-				],
-				"name": "init_members",
+				"name": "add_recmd",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
@@ -266,17 +275,11 @@
 						"type": "uint256"
 					}
 				],
-				"name": "whitdraw",
+				"name": "request",
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "constructor"
 			},
 			{
 				"payable": true,
@@ -344,7 +347,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Users/liuxiaoxu/Desktop/SecondSemester/nlp/MicroLoans/Main.sol": "microloan"
+			"New_Main.sol": "microloan"
 		},
 		"evmVersion": "byzantium",
 		"libraries": {},
@@ -355,10 +358,10 @@
 		"remappings": []
 	},
 	"sources": {
-		"Users/liuxiaoxu/Desktop/SecondSemester/nlp/MicroLoans/Main.sol": {
-			"keccak256": "0xa689a897fa7ad36f3ab1924eb476410dae55f5fc92348bf7eb6be1c2f0c887f6",
+		"New_Main.sol": {
+			"keccak256": "0x4ceacb828243311a6ab1b3951b5d5b2a05af3187e39850d33e607045763b5ca7",
 			"urls": [
-				"bzzr://6cf4ba753fbfa679d088b98a59a1a92e103f2f0cbe23212c2e7d15ca6b0e8c41"
+				"bzzr://77d9946453d05ea32d64258b463d98904ec467f7f64a1628aaf019e0488fe50e"
 			]
 		}
 	},
