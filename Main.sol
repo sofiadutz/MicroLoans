@@ -50,7 +50,6 @@ contract microloan {
   // when money is deposited
   event Deposit(address sender,uint amount);
   // when loan is requested
-  event LoanRequest(address borrower,uint amount);
   event LoanRequest(address borrower, uint amount);
 
   //resets counter for new member
