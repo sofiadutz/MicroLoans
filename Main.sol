@@ -140,7 +140,7 @@ contract microloan {
   }
 
     //show ID refrences of a member
-  function list_refrences(address _master_address) constant returns (uint,uint,uint,uint) {
+  function list_refrences(address _master_address) constant returns (string,string,string,string) {
 
     return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID);
 
