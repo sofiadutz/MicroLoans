@@ -1,17 +1,9 @@
-pragma solidity ^0.4.0;
-pragma solidity ^0.4.1;
-
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
+pragma solidity ^0.4;
 
 contract microloan {
 
-  using SafeMath for uint;
-  //using SafeMath for uint;
-
   uint TimeStart; //time stamp of the block
-  //constructor
-  function microloan() public payable {
+  function time() public payable {
       TimeStart=now;
 
   }
@@ -284,7 +276,7 @@ contract microloan {
 //for lenders to withdraw their interest
 // TODO: modify so that the person who calls this function is a lender and can access to the interest associated with its initial deposit invested
 
-  function withdraw_interest(lender) public every_3_months {
+  function withdraw_interest(address lender) public every_3_months {
   
   uint Periods = 3;
   uint Interest;
