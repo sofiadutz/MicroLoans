@@ -24,8 +24,6 @@ contract microloan {
     
     bool borrower;
     
-    //TODO: Replace the addresees with an array of them
-    // allow for the possibility of having more than 4 sponsors
     address sponsor_1;
     address sponsor_2;
     address sponsor_3;
@@ -38,7 +36,7 @@ contract microloan {
   mapping (address => member) link;
 
   uint count=1;
-  //TODO: Replace the addresees with an array of them
+
   address var1;
   address var2;
   address var3;
@@ -63,7 +61,7 @@ contract microloan {
   function init_members(string _ID) {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0,true,0x1,0x2,0x3,0x4);
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,0x1,0x2,0x3,0x4);
       init_member_counter++;
     }
     else{
@@ -91,7 +89,7 @@ contract microloan {
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,0,false,var1,0,0,0);
+      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,0,0,0);
     }
     else if (count==2)
     {
@@ -115,7 +113,7 @@ contract microloan {
   function add_Lender(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
+  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0);
   }
   
 
@@ -123,13 +121,20 @@ contract microloan {
   function add_recmd(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,true,0,0,0,0);
+  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0);
   }
 
-  //deposit money in the pool
+//deposit money in the pool
   function deposit(uint __amount) payable {
 
     this.transfer(__amount);
+    if(amount_borrowed[msg.sender]>0) {
+      amount_borrowed[msg.sender]= amount_borrowed[msg.sender] - __amount;
+      if(amount_borrowed[msg.sender]<0) {
+        amount_borrowed[msg.sender]=0;
+      }
+
+    }
 
   }
     //shows the money in the pool
@@ -145,14 +150,18 @@ contract microloan {
     return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID);
 
   }
+  
   uint[] public amounts;
+  
 //requested money mapped to member address
   mapping (uint => address) amount_map;
+  
+//amount effectively borrowed
+  mapping (address => uint) amount_borrowed;
 
-//TODO: Add modifier to prevent pooling too many times or too early
+
   modifier onlymember()
   {
-      //TODO: check the flag instead of the sponsors number
       uint memcount=link[msg.sender].counter;
       if(memcount >= 4)
       {
@@ -251,7 +260,7 @@ contract microloan {
 
 //Pay the members the requested loan amount
 //Check if the four recommender's deposit covers the loan
-  function pay_loan() public every_3_months {
+  function pay_loan() public every_3_months payable {
 
     for(uint w=0; w <= counter_sum; w++ ){
       temp_address = amount_map[amounts[w]];
@@ -264,7 +273,9 @@ contract microloan {
       if (total_recmd >= amounts[w]) {
 
       
-      temp_address.transfer(amounts[w]);}
+      temp_address.transfer(amounts[w]);
+      amount_borrowed[msg.sender] = amounts[w];
+      delete amounts[w];}
       else {
         revert();
       }
