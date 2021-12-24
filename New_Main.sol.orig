@@ -135,7 +135,7 @@ contract microloan {
 
   //deposit money in the pool
   function deposit(uint __amount) payable {
-
+    link[msg.sender].deposit = __amount;
     this.transfer(__amount);
     link[msg.sender].deposit += __amount;
     if(amount_borrowed[msg.sender]>0) {
@@ -297,18 +297,26 @@ contract microloan {
     
     }
   }
-
+<<<<<<< HEAD
   function show_recDepo(uint w) constant returns(uint,uint,uint,uint) {
     temp_address = amount_map[amounts[w]];
+||||||| 1079c5b
+  
+=======
+  
+   function withdraw_deposit(address _member) public {
+      require(_member == msg.sender);
+      uint amount = link[_member].deposit;
+      msg.sender.transfer(amount);
+      link[msg.sender].deposit = link[msg.sender].deposit - amount;
+
+  }
+
+>>>>>>> af2bbbb1ecbfa8006f20d2e4c5a83eec5b122524
+
     return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
   } 
-  function withdraw_deposit(address _member) public {
-    require(_member == msg.sender);
-    uint amount = link[_member].deposit;
-    msg.sender.transfer(amount);
-    link[msg.sender].deposit = link[msg.sender].deposit - amount;
 
-}
   function show_Depo(address _master_address) constant returns (uint) {
 
     return (link[_master_address].deposit);
