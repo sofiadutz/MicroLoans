@@ -24,6 +24,20 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_member",
+						"type": "address"
+					}
+				],
+				"name": "withdraw_deposit",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [
 					{
@@ -72,6 +86,25 @@
 				"constant": true,
 				"inputs": [],
 				"name": "getPoolMoney",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_deposit",
 				"outputs": [
 					{
 						"name": "",
@@ -284,20 +317,6 @@
 				"constant": false,
 				"inputs": [
 					{
-						"name": "__amount",
-						"type": "uint256"
-					}
-				],
-				"name": "deposit",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
 						"name": "_req_member",
 						"type": "address"
 					},
@@ -310,6 +329,15 @@
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -418,9 +446,9 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0x1f7077c7b7537e58f6e5f15e1189c33c8413e932b581743b9d113fa922dbada3",
+			"keccak256": "0x3a1d6520a4d28e6989c9fb34af2c5635b914aab32ed4ddce7028d86e1bc224b9",
 			"urls": [
-				"bzzr://6e02b7e0fea460ac5e9e5d6536c7dacb2f1f62069d6e206c171d1ee0f3355422"
+				"bzzr://cb4a31edbfb0a797099d60ab278b14410cfe10022e6bab6c10ce1c75c14c2afa"
 			]
 		}
 	},

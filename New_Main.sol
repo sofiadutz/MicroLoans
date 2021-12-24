@@ -134,8 +134,8 @@ contract microloan {
   }
 
   //deposit money in the pool
-  function deposit(uint __amount) payable {
-
+  function deposit() payable {
+    uint __amount = msg.value;
     this.transfer(__amount);
     link[msg.sender].deposit += __amount;
     if(amount_borrowed[msg.sender]>0) {
