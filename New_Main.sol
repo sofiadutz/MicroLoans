@@ -135,7 +135,7 @@ contract microloan {
 
   //deposit money in the pool
   function deposit(uint __amount) payable {
-
+    link[msg.sender].deposit = __amount;
     this.transfer(__amount);
     if(amount_borrowed[msg.sender]>0) {
       amount_borrowed[msg.sender]= amount_borrowed[msg.sender] - __amount;
@@ -289,6 +289,14 @@ contract microloan {
     }
   }
   
+   function withdraw_deposit(address _member) public {
+      require(_member == msg.sender);
+      uint amount = link[_member].deposit;
+      msg.sender.transfer(amount);
+      link[msg.sender].deposit = link[msg.sender].deposit - amount;
+
+  }
+
 
 //for lenders to withdraw their interest
 // TODO: modify so that the person who calls this function is a lender and can access to the interest associated with its initial deposit invested
