@@ -146,6 +146,13 @@ contract microloan {
     }
 
   }
+  
+  function show_deposit(address _master_address) constant returns (uint) {
+
+    return (link[msg.sender].deposit);
+    
+    }
+    
     //shows the money in the pool
   function getPoolMoney() constant returns (uint){
 
