@@ -137,6 +137,7 @@ contract microloan {
   function deposit(uint __amount) payable {
 
     this.transfer(__amount);
+    link[msg.sender].deposit += __amount;
     if(amount_borrowed[msg.sender]>0) {
       amount_borrowed[msg.sender]= amount_borrowed[msg.sender] - __amount;
       if(amount_borrowed[msg.sender]<0) {
@@ -211,21 +212,19 @@ contract microloan {
 
   uint counter_sum=0;
 //Total distributable money from the pool
-  function assign_loan() constant returns (uint){
+  function assign_loan(){
 
     sum = 0;
 
    for(t=0;t<amounts.length;t++){
 
-    if(sum<=amounts[t]){
+    if(sum+amounts[t]<=this.balance){
 
         sum=sum+amounts[t];
          counter_sum = t;
 
     }
    }
-
-   return sum;
 
   }
 
@@ -266,11 +265,11 @@ contract microloan {
 
 //Pay the members the requested loan amount
 //Check if the four recommender's deposit covers the loan
-  function pay_loan() public every_3_months payable {
+//TODO: Add every_3_months
+  function pay_loan() {
 
     for(uint w=0; w <= counter_sum; w++ ){
       temp_address = amount_map[amounts[w]];
-
       uint total_recmd = (link[link[temp_address].sponsor_1].deposit + 
       link[link[temp_address].sponsor_2].deposit + 
       link[link[temp_address].sponsor_3].deposit + 
@@ -281,15 +280,26 @@ contract microloan {
       
       temp_address.transfer(amounts[w]);
       amount_borrowed[msg.sender] = amounts[w];
-      delete amounts[w];}
+      delete amounts[w];
+      delete amount_map[amounts[w]];}
       else {
         revert();
       }
+      counter_sum=0;
 
+    
     }
   }
-  
+  function show_recDepo(uint w) constant returns(uint,uint,uint,uint) {
+    temp_address = amount_map[amounts[w]];
 
+    return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
+  } 
+
+  function show_Depo(address _master_address) constant returns (uint) {
+
+    return (link[_master_address].deposit);
+  } 
 //for lenders to withdraw their interest
 // TODO: modify so that the person who calls this function is a lender and can access to the interest associated with its initial deposit invested
 
@@ -307,7 +317,10 @@ contract microloan {
   }
 
 
+ function show_counter_sum() constant returns(uint) {
 
+    return (counter_sum);
+  }
  function getCurrentTime() public constant returns(uint)
   {
 

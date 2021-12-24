@@ -25,6 +25,37 @@
 			},
 			{
 				"constant": true,
+				"inputs": [
+					{
+						"name": "w",
+						"type": "uint256"
+					}
+				],
+				"name": "show_recDepo",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
 				"inputs": [],
 				"name": "getCurrentTime",
 				"outputs": [
@@ -53,8 +84,13 @@
 			},
 			{
 				"constant": true,
-				"inputs": [],
-				"name": "assign_loan",
+				"inputs": [
+					{
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_Depo",
 				"outputs": [
 					{
 						"name": "",
@@ -63,6 +99,15 @@
 				],
 				"payable": false,
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "assign_loan",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -129,8 +174,8 @@
 				"inputs": [],
 				"name": "pay_loan",
 				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
+				"payable": false,
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -268,6 +313,20 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [],
+				"name": "show_counter_sum",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -359,9 +418,9 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0x4ceacb828243311a6ab1b3951b5d5b2a05af3187e39850d33e607045763b5ca7",
+			"keccak256": "0x1f7077c7b7537e58f6e5f15e1189c33c8413e932b581743b9d113fa922dbada3",
 			"urls": [
-				"bzzr://77d9946453d05ea32d64258b463d98904ec467f7f64a1628aaf019e0488fe50e"
+				"bzzr://6e02b7e0fea460ac5e9e5d6536c7dacb2f1f62069d6e206c171d1ee0f3355422"
 			]
 		}
 	},
