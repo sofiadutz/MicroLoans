@@ -26,8 +26,7 @@ contract microloan {
     
     bool borrower;
     
-    //TODO: Replace the addresees with an array of them
-    // allow for the possibility of having more than 4 sponsors
+
     address sponsor_1;
     address sponsor_2;
     address sponsor_3;
@@ -40,7 +39,7 @@ contract microloan {
   mapping (address => member) link;
 
   uint count=1;
-  //TODO: Replace the addresees with an array of them
+
   address var1;
   address var2;
   address var3;
@@ -126,12 +125,6 @@ contract microloan {
   }
   
 
-  //add recommender as member, in order to check collateral availability
-  function add_recmd(address _req_member, string __ID) {
-  onlynew(_req_member);
-  user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0);
-  }
 
   //deposit money in the pool
   function deposit() payable {
