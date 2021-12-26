@@ -324,7 +324,7 @@ contract microloan {
   uint Interest;
   uint InterestRateInteger = 2;
   uint Principle = link[lender].deposit;
-  
+  require(msg.sender == lender);
   Interest = (Principle * (1 + InterestRateInteger/100)**Periods) - Principle;
   msg.sender.transfer(Interest);
   
