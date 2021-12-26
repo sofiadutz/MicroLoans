@@ -84,8 +84,8 @@ contract microloan {
     }
 
   }
-   //validates new member by sponsors
- 
+  
+  //validates new member by sponsors
   function add_Member(address _req_member,string __ID) check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
@@ -118,6 +118,8 @@ contract microloan {
 
     return (link[msg.sender].counter);
   }
+  
+  // add members without recommenders
   function add_Lender(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
@@ -140,7 +142,7 @@ contract microloan {
     }
 
   }
-  
+  //shows individual deposit
   function show_deposit(address _master_address) constant returns (uint) {
 
     return (link[msg.sender].deposit);
@@ -163,12 +165,11 @@ contract microloan {
   uint[] amounts;
 //requested money mapped to member address
   mapping (uint => address) amount_map;
-  // amount effectively borrowed
+// amount effectively borrowed
   mapping (address => uint) amount_borrowed;
-//TODO: Add modifier to prevent pooling too many times or too early
+
   modifier onlymember()
   {
-      //TODO: check the flag instead of the sponsors number
       uint memcount=link[msg.sender].counter;
       if(memcount >= 4)
       {
@@ -179,6 +180,7 @@ contract microloan {
           revert();
       }
   }
+  
 //To request money from the pool
   function request(uint _amount_) {
     amounts.push(_amount_);
@@ -211,6 +213,8 @@ contract microloan {
   uint t;
 
   uint counter_sum=0;
+  
+  
 //Total distributable money from the pool
   function assign_loan(){
 
@@ -232,6 +236,8 @@ contract microloan {
   {
       return(link[ad1].addtime);
   }
+  
+  
 //Address of members who will receive loan
   function BorrowersList() public constant returns(address[]){
 
@@ -248,6 +254,8 @@ contract microloan {
   }
 
   address temp_address;
+  
+  
 //Check if the month is end of three months cycle
   modifier every_3_months {
 
@@ -264,9 +272,8 @@ contract microloan {
   }
 
 //Pay the members the requested loan amount
-//Check if the four recommender's deposit covers the loan
-//TODO: Add every_3_months
-  function pay_loan() {
+
+  function pay_loan() every_3_months {
 
     for(uint w=0; w <= counter_sum; w++ ){
       temp_address = amount_map[amounts[w]];
@@ -291,10 +298,13 @@ contract microloan {
     }
   }
 
+// shows deposits of recommenders
   function show_recDepo(uint w) constant returns(uint,uint,uint,uint) {
     temp_address = amount_map[amounts[w]];
     return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
   } 
+  
+//to withdraw deposit
   function withdraw_deposit(address _member) public {
     require(_member == msg.sender);
     uint amount = link[_member].deposit;
@@ -306,9 +316,8 @@ contract microloan {
 
     return (link[_master_address].deposit);
   } 
-//for lenders to withdraw their interest
-// TODO: modify so that the person who calls this function is a lender and can access to the interest associated with its initial deposit invested
 
+//for lenders to withdraw their interest
   function withdraw_interest(address lender) public every_3_months {
   
   uint Periods = 3;
