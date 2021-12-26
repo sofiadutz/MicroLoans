@@ -11,28 +11,27 @@ For this reason, we introduced a blockchain solution that focuses on allowing to
 
 ## Perspectives and future developments: Credit system & Social features
 
-<ul>
-  <li>1. Automize credit system
-    <ul>
-    To motivate active usage and give credit record reference for other financial institutes, credit system could be introduced based on user’s behavior. Rules for example:
-      <ul>
-  <li>Collection:
-    <ul>
-    <li>Earn credit point after successful loan, for both borrower and recommender </li>
-    <li>Earn point for sharing MicroLoan activities on social media and for new member invitation</li>
-    <li>Extra point for being both trustful borrower and responsible recommender</li>
-    <li>Extra point if accumulated amount and frequency reached certain level​</li>
-    <li>Extra point if invited members reached certain level of frequent activities</li>
-    </ul>
-  </li>Function:
-    <ul>
-    <li>Credit points can be used for customer tier identification, and therefore slightly tiered interest pricing, and more payback mode options</li>
-    <li>In tier groups, adjust loan request priorities, mainly focus on poor credit user in the system</li>
-    </ul>
-  </li>Technically:
-    <ul>
-    <li>Introduce a new balance for credit points, with functions of plus, minus, cluster into tiers, rank in each tier.</li>
-</ul>
+> 1. Automize credit system
+>>    <ul>
+>>    To motivate active usage and give credit record reference for other financial institutes, credit system could be introduced based on user’s behavior. Rules >>for example:
+>>      <ul>
+>>  <li>Collection:
+>>    <ul>
+>>    <li>Earn credit point after successful loan, for both borrower and recommender </li>
+>>    <li>Earn point for sharing MicroLoan activities on social media and for new member invitation</li>
+>>    <li>Extra point for being both trustful borrower and responsible recommender</li>
+>>    <li>Extra point if accumulated amount and frequency reached certain level​</li>
+>>    <li>Extra point if invited members reached certain level of frequent activities</li>
+>>    </ul>
+>>  </li>Function:
+>>    <ul>
+>>    <li>Credit points can be used for customer tier identification, and therefore slightly tiered interest pricing, and more payback mode options</li>
+>>    <li>In tier groups, adjust loan request priorities, mainly focus on poor credit user in the system</li>
+>>    </ul>
+>>  </li>Technically:
+>>    <ul>
+>>    <li>Introduce a new balance for credit points, with functions of plus, minus, cluster into tiers, rank in each tier.</li>
+>> </ul>
 
 
 <ul>
