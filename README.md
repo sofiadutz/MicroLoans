@@ -13,7 +13,9 @@ For this reason, we introduced a blockchain solution that focuses on allowing to
 
 <ul>
   <li>1. Automize credit system
+    <ul>
     To motivate active usage and give credit record reference for other financial institutes, credit system could be introduced based on user’s behavior. Rules for example:
+      <ul>
   <li>Collection:
     <ul>
     <li>Earn credit point after successful loan, for both borrower and recommender </li>
