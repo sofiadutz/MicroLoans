@@ -37,7 +37,9 @@ For this reason, we introduced a blockchain solution that focuses on allowing to
 
 <ul>
   <li>2. Optimize social features
+    <ul>
     Social features could lead to more diverse user groups, and customize their own type of financial aids, either charitable or profit-oriented.
+      <ul>
   <li>Introduce social publicity: link to personal social media to partially increase creditability for both platform and users in other roles
   </li>Marketing outreaching: Exposure and interaction leads to loan coupons or interest advantage
   </li>Expands target groups of lender and recommender with customized service: Add charity features, for instance, animal protection association can customize lend/recommend contract, for people with proof of pets; welfare organization can customize deposit pool for family with more children.
