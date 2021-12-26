@@ -33,16 +33,18 @@ For this reason, we introduced a blockchain solution that focuses on allowing to
 >>    <ul>
 >>    <li>Introduce a new balance for credit points, with functions of plus, minus, cluster into tiers, rank in each tier.</li>
 >>    <ul>
+>> 
+
+
+
+> 2. Optimize social features
+>>    <ul>
+>>    Social features could lead to more diverse user groups, and customize their own type of financial aids, either charitable or profit-oriented.
+>>      <ul>
+>>  <li>Introduce social publicity: link to personal social media to partially increase creditability for both platform and users in other roles
+>>  </li>Marketing outreaching: Exposure and interaction leads to loan coupons or interest advantage
+>>  </li>Expands target groups of lender and recommender with customized service: Add charity features, for instance, animal protection association can customize 
+>> lend/recommend contract, for people with proof of pets; welfare organization can customize deposit pool for family with more children.
+>>    <li>Community reward: Recommenders/lenders in specific pool can support SMEs, customize contract with lower interest plus long-term community rewards, like 
+>> laundry store coupon, bistro discount in the future.
 >> </ul>
-
-
-<ul>
-  <li>2. Optimize social features
-    <ul>
-    Social features could lead to more diverse user groups, and customize their own type of financial aids, either charitable or profit-oriented.
-      <ul>
-  <li>Introduce social publicity: link to personal social media to partially increase creditability for both platform and users in other roles
-  </li>Marketing outreaching: Exposure and interaction leads to loan coupons or interest advantage
-  </li>Expands target groups of lender and recommender with customized service: Add charity features, for instance, animal protection association can customize lend/recommend contract, for people with proof of pets; welfare organization can customize deposit pool for family with more children.
-    <li>Community reward: Recommenders/lenders in specific pool can support SMEs, customize contract with lower interest plus long-term community rewards, like laundry store coupon, bistro discount in the future.
-</ul>
