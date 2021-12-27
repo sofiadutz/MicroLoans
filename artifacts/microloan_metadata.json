@@ -336,6 +336,21 @@
 			{
 				"constant": true,
 				"inputs": [],
+				"name": "show_borrowewd",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
 				"name": "show_deposit",
 				"outputs": [
 					{
@@ -459,10 +474,10 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0x769fd7fe6953d2fe9f2e585e0273f9d2d3e0e8222e5bfb8759f2efaafdcee6b6",
+			"keccak256": "0xb1ce76a745defcbc050cde91d16d28dd4d859eb52bb281f80adfb0124ec3360e",
 			"urls": [
-				"bzz-raw://24ab50d9af9a2f53f263f12c0b46d67abbfccd610cf72c943f3da44e95a773d7",
-				"dweb:/ipfs/QmPCwVNr9HNTUBAKEUDbngVoqbpn3yddEoh4xWJN7hbrhJ"
+				"bzz-raw://ce5322d88d871b876a180ea754cd5fc137f3b8584f69a3413704951d4a4145d9",
+				"dweb:/ipfs/Qmaj14qXDNkAqqWDsK9MRwTQ4EHpkLthAHpjLGs8bV8YrT"
 			]
 		},
 		"ownable.sol": {

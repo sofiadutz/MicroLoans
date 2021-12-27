@@ -134,7 +134,7 @@ contract microloan is Ownable {
   function deposit() public payable {
     uint __amount = msg.value;
     address(this).transfer(__amount);
-    link[msg.sender].deposit += __amount;
+    
     if(amount_borrowed[msg.sender]>0) {
       link[link[msg.sender].sponsor_1].deposit += __amount/4;
       link[link[msg.sender].sponsor_1].sponsored_deposit -= __amount/4;
@@ -148,6 +148,9 @@ contract microloan is Ownable {
       if(amount_borrowed[msg.sender]<0) {
         amount_borrowed[msg.sender]=0;
       }
+    }
+    else {
+      link[msg.sender].deposit += __amount;
 
     }
 
@@ -163,7 +166,11 @@ contract microloan is Ownable {
     return (link[msg.sender].sponsored_deposit);
     
     }
+  function show_borrowewd() public view returns (uint) {
+
+    return (amount_borrowed[msg.sender]);
     
+    }   
     //shows the money in the pool
   function getPoolMoney() public view returns (uint){
 
@@ -314,7 +321,7 @@ contract microloan is Ownable {
       }
       uint interest_rate_integer = 4;
       temp_address.transfer(amounts[w]*interest_rate_integer/100);
-      amount_borrowed[msg.sender] = amounts[w];
+      amount_borrowed[temp_address] = amounts[w];
       link[link[temp_address].sponsor_1].deposit -= recmd_share;
       link[link[temp_address].sponsor_1].sponsored_deposit += recmd_share;
       link[link[temp_address].sponsor_2].deposit -= recmd_share;
