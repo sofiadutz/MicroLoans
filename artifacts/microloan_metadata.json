@@ -1,10 +1,155 @@
 {
 	"compiler": {
-		"version": "0.4.26+commit.4563c3fc"
+		"version": "0.5.17+commit.d19bba13"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "borrower",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "LoanRequest",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "Sponsor",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "new_member",
+						"type": "address"
+					}
+				],
+				"name": "NewMemberSponsored",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "BorrowersList",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "__ID",
+						"type": "string"
+					}
+				],
+				"name": "add_Lender",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_req_member",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "__ID",
+						"type": "string"
+					}
+				],
+				"name": "add_Member",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "assign_loan",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
 			{
 				"constant": false,
 				"inputs": [],
@@ -15,51 +160,18 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [],
-				"name": "time",
-				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_member",
-						"type": "address"
-					}
-				],
-				"name": "withdraw_deposit",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": true,
 				"inputs": [
 					{
-						"name": "w",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "ad1",
+						"type": "address"
 					}
 				],
-				"name": "show_recDepo",
+				"name": "check_time",
 				"outputs": [
 					{
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"name": "",
-						"type": "uint256"
-					},
-					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -69,11 +181,21 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getCurrentTime",
 				"outputs": [
 					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -88,44 +210,7 @@
 				"name": "getPoolMoney",
 				"outputs": [
 					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
-				"name": "show_deposit",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
-				"name": "show_Depo",
-				"outputs": [
-					{
+						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
@@ -136,31 +221,9 @@
 			},
 			{
 				"constant": false,
-				"inputs": [],
-				"name": "assign_loan",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
 				"inputs": [
 					{
-						"name": "newadd",
-						"type": "address"
-					}
-				],
-				"name": "onlynew",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
+						"internalType": "string",
 						"name": "_ID",
 						"type": "string"
 					}
@@ -173,29 +236,64 @@
 			},
 			{
 				"constant": true,
+				"inputs": [],
+				"name": "isOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
 				"inputs": [
 					{
+						"internalType": "address",
 						"name": "_master_address",
 						"type": "address"
 					}
 				],
-				"name": "list_refrences",
+				"name": "list_references",
 				"outputs": [
 					{
+						"internalType": "string",
 						"name": "",
 						"type": "string"
 					},
 					{
+						"internalType": "string",
 						"name": "",
 						"type": "string"
 					},
 					{
+						"internalType": "string",
 						"name": "",
 						"type": "string"
 					},
 					{
+						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"payable": false,
@@ -212,152 +310,19 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [],
-				"name": "BorrowersList",
-				"outputs": [
-					{
-						"name": "",
-						"type": "address[]"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_req_member",
-						"type": "address"
-					},
-					{
-						"name": "__ID",
-						"type": "string"
-					}
-				],
-				"name": "add_Member",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "ad1",
-						"type": "address"
-					}
-				],
-				"name": "check_time",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_req_member",
-						"type": "address"
-					},
-					{
-						"name": "__ID",
-						"type": "string"
-					}
-				],
-				"name": "add_Lender",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "lender",
-						"type": "address"
-					}
-				],
-				"name": "withdraw_interest",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
-				"name": "show_count",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "_req_member",
-						"type": "address"
-					},
-					{
-						"name": "__ID",
-						"type": "string"
-					}
-				],
-				"name": "add_recmd",
-				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [],
-				"name": "deposit",
+				"name": "renounceOwnership",
 				"outputs": [],
-				"payable": true,
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "show_counter_sum",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
 				"payable": false,
-				"stateMutability": "view",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"constant": false,
 				"inputs": [
 					{
+						"internalType": "uint256",
 						"name": "_amount_",
 						"type": "uint256"
 					}
@@ -369,74 +334,206 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_Depo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_count",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "show_counter_sum",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_master_address",
+						"type": "address"
+					}
+				],
+				"name": "show_deposit",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "w",
+						"type": "uint256"
+					}
+				],
+				"name": "show_recDepo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "time",
+				"outputs": [],
 				"payable": true,
 				"stateMutability": "payable",
-				"type": "fallback"
+				"type": "function"
 			},
 			{
-				"anonymous": false,
+				"constant": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"name": "Sponsor",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "new_member",
+						"internalType": "address",
+						"name": "newOwner",
 						"type": "address"
 					}
 				],
-				"name": "NewMemberSponsored",
-				"type": "event"
+				"name": "transferOwnership",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
 			},
 			{
-				"anonymous": false,
+				"constant": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"name": "sender",
+						"internalType": "address",
+						"name": "_member",
 						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "amount",
-						"type": "uint256"
 					}
 				],
-				"name": "Deposit",
-				"type": "event"
+				"name": "withdraw_deposit",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
 			},
 			{
-				"anonymous": false,
+				"constant": false,
 				"inputs": [
 					{
-						"indexed": false,
-						"name": "borrower",
+						"internalType": "address",
+						"name": "lender",
 						"type": "address"
-					},
-					{
-						"indexed": false,
-						"name": "amount",
-						"type": "uint256"
 					}
 				],
-				"name": "LoanRequest",
-				"type": "event"
+				"name": "withdraw_interest",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
-			"methods": {}
+			"methods": {
+				"isOwner()": {
+					"return": "true if `msg.sender` is the owner of the contract."
+				},
+				"owner()": {
+					"return": "the address of the owner."
+				},
+				"renounceOwnership()": {
+					"details": "Allows the current owner to relinquish control of the contract."
+				},
+				"transferOwnership(address)": {
+					"details": "Allows the current owner to transfer control of the contract to a newOwner.",
+					"params": {
+						"newOwner": "The address to transfer ownership to."
+					}
+				}
+			}
 		},
 		"userdoc": {
-			"methods": {}
+			"methods": {
+				"renounceOwnership()": {
+					"notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+				}
+			}
 		}
 	},
 	"settings": {
 		"compilationTarget": {
 			"New_Main.sol": "microloan"
 		},
-		"evmVersion": "byzantium",
+		"evmVersion": "istanbul",
 		"libraries": {},
 		"optimizer": {
 			"enabled": false,
@@ -446,9 +543,17 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0x3a1d6520a4d28e6989c9fb34af2c5635b914aab32ed4ddce7028d86e1bc224b9",
+			"keccak256": "0x5735396eaebb10c07a2ca956e54a6206b691fccb04550c35d289ac6dd21daaf7",
 			"urls": [
-				"bzzr://cb4a31edbfb0a797099d60ab278b14410cfe10022e6bab6c10ce1c75c14c2afa"
+				"bzz-raw://0cdf9ab47c707068b9b367ec572ca8cfe2dd3b61ae035f21fcb92d8d701f0e23",
+				"dweb:/ipfs/QmbAeQLprf3NGRhmZGveV5u6d5S1o18ppuvDedi33HXe2i"
+			]
+		},
+		"ownable.sol": {
+			"keccak256": "0x3975d7bc1eed490de45aea9989ef691dc5cbe6fbde88cde80f1b570825a0f198",
+			"urls": [
+				"bzz-raw://78f615823cde88d4d5e3d07cda3cfad7f0bc57ff6ea5f0900a24b0c642cc80b1",
+				"dweb:/ipfs/QmR1UAo7Ym95oG2sXf84HpE1pH7F6Aeah8ruZPt4CMfWMg"
 			]
 		}
 	},

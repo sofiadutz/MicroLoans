@@ -1,6 +1,6 @@
-pragma solidity ^0.4;
-
-contract microloan {
+pragma solidity >=0.5.0 <0.6.0;
+import "./ownable.sol";
+contract microloan is Ownable {
 
 
   uint TimeStart; //time stamp of the block
@@ -32,7 +32,7 @@ contract microloan {
     address sponsor_3;
     address sponsor_4;
     
-    address sponsorship
+    address sponsorship;
 
   }
  uint CurrentTime;
@@ -57,17 +57,17 @@ contract microloan {
  
 
   //resets counter for new member
-  function onlynew(address newadd){
+  function onlynew(address newadd) private{
 
-      if(link[newadd].sponsor_1==0x0)
+      if(link[newadd].sponsor_1==address(0))
         count=1;
 
   }
   //Function that only allows to initiate the 4 initial members 
-  function init_members(string _ID) {
+  function init_members(string memory _ID) public{
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,0x1,0x2,0x3,0x4,0x5);
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,address(0),address(0),address(0),address(0),address(0));
       init_member_counter++;
     }
     else{
@@ -88,14 +88,14 @@ contract microloan {
   }
   
   //validates new member by sponsors
-  function add_Member(address _req_member,string __ID) check_num_sponsors(msg.sender) {
+  function add_Member(address _req_member,string memory __ID) public check_num_sponsors(msg.sender) {
 
     onlynew(_req_member);
 
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,0,0,0,0);
+      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,address(0),address(0),address(0),address(0));
       link[var1].sponsorship = _req_member;
     }
     else if (count==2)
@@ -120,24 +120,24 @@ contract microloan {
 
 
   }
-  function show_count(address _master_address) constant returns (uint) {
+  function show_count(address _master_address) public view returns (uint) {
 
     return (link[msg.sender].counter);
   }
   
   // add members without recommenders
-  function add_Lender(address _req_member, string __ID) {
+  function add_Lender(address _req_member, string memory __ID) public {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0,0);
+  link[_req_member]=member(now,count,_req_member,__ID,0,false,address(0),address(0),address(0),address(0),address(0));
   }
   
 
 
   //deposit money in the pool
-  function deposit() payable {
+  function deposit() public payable {
     uint __amount = msg.value;
-    this.transfer(__amount);
+    address(this).transfer(__amount);
     link[msg.sender].deposit += __amount;
     if(amount_borrowed[msg.sender]>0) {
       amount_borrowed[msg.sender]= amount_borrowed[msg.sender] - __amount;
@@ -149,21 +149,21 @@ contract microloan {
 
   }
   //shows individual deposit
-  function show_deposit(address _master_address) constant returns (uint) {
+  function show_deposit(address _master_address) public view returns (uint) {
 
     return (link[msg.sender].deposit);
     
     }
     
     //shows the money in the pool
-  function getPoolMoney() constant returns (uint){
+  function getPoolMoney() public view returns (uint){
 
-    return this.balance;
+    return address(this).balance;
 
   }
 
     //show ID refrences of a member
-  function list_references(address _master_address) constant returns (string,string,string,string) {
+  function list_references(address _master_address) public view returns (string memory,string memory,string memory,string memory) {
 
     return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID); 
   }
@@ -189,7 +189,7 @@ contract microloan {
   }
   
 //To request money from the pool
-  function request(uint _amount_) {
+  function request(uint _amount_) public{
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
@@ -197,8 +197,8 @@ contract microloan {
   
 
   uint temp;
-// TODO: Not sure if we need this buble_sort
-  function bubble_sort(){
+
+  function bubble_sort() external onlyOwner{
 
     for(uint j=0;j<amounts.length-1;j++){
 
@@ -223,13 +223,13 @@ contract microloan {
   
   
 //Total distributable money from the pool
-  function assign_loan(){
+  function assign_loan() external onlyOwner{
 
     sum = 0;
 
    for(t=0;t<amounts.length;t++){
 
-    if(sum+amounts[t]<=this.balance){
+    if(sum+amounts[t]<=address(this).balance){
 
         sum=sum+amounts[t];
          counter_sum = t;
@@ -239,14 +239,14 @@ contract microloan {
 
   }
 
-  function check_time(address ad1) constant returns(uint)
+  function check_time(address ad1) public view returns(uint)
   {
       return(link[ad1].addtime);
   }
   
   
 //Address of members who will receive loan
-  function BorrowersList() public constant returns(address[]){
+  function BorrowersList() public view returns(address[] memory){
 
     uint length = amounts.length;
     address[] memory addr = new address[](length);
@@ -260,7 +260,7 @@ contract microloan {
     return addr ;
   }
 
-  address temp_address;
+
   
   
 //Check if the month is end of three months cycle
@@ -279,35 +279,43 @@ contract microloan {
   }
 
 //Pay the members the requested loan amount
-
-  function pay_loan() every_3_months {
+// TODO: add every_3_months
+  function pay_loan() external onlyOwner {
 
     for(uint w=0; w <= counter_sum; w++ ){
-      temp_address = amount_map[amounts[w]];
-      uint total_recmd = (link[link[temp_address].sponsor_1].deposit + 
-      link[link[temp_address].sponsor_2].deposit + 
-      link[link[temp_address].sponsor_3].deposit + 
-      link[link[temp_address].sponsor_4].deposit);
+      address payable temp_address = address(uint160(amount_map[amounts[w]]));
+      uint recmd_share = amounts[w]/4;
+      if (recmd_share > link[link[temp_address].sponsor_1].deposit){
+        revert('sponsor 1 problem');
+      }
+      if (recmd_share > link[link[temp_address].sponsor_2].deposit){
+        revert('sponsor 2 problem');
+      }
+      if (recmd_share > link[link[temp_address].sponsor_3].deposit){
+        revert('sponsor 3 problem');
+      }
+      if (recmd_share > link[link[temp_address].sponsor_4].deposit){
+        revert('sponsor 4 problem');
+      }
 
-      if (total_recmd >= amounts[w]) {
-
-      
       temp_address.transfer(amounts[w]);
       amount_borrowed[msg.sender] = amounts[w];
+      link[link[temp_address].sponsor_1].deposit -= recmd_share;
+      link[link[temp_address].sponsor_2].deposit -= recmd_share;
+      link[link[temp_address].sponsor_3].deposit -= recmd_share;
+      link[link[temp_address].sponsor_4].deposit -= recmd_share;
       delete amounts[w];
       delete amount_map[amounts[w]];}
-      else {
-        revert();
-      }
+
       counter_sum=0;
 
     
-    }
+    
   }
 
 // shows deposits of recommenders
-  function show_recDepo(uint w) constant returns(uint,uint,uint,uint) {
-    temp_address = amount_map[amounts[w]];
+  function show_recDepo(uint w) public view returns(uint,uint,uint,uint) {
+    address payable temp_address = address(uint160(amount_map[amounts[w]]));
     return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
   } 
   
@@ -319,7 +327,7 @@ contract microloan {
     link[msg.sender].deposit = link[msg.sender].deposit - amount;
 
 }
-  function show_Depo(address _master_address) constant returns (uint) {
+  function show_Depo(address _master_address) public view returns (uint) {
 
     return (link[_master_address].deposit);
   } 
@@ -339,18 +347,17 @@ contract microloan {
   }
 
 
- function show_counter_sum() constant returns(uint) {
+ function show_counter_sum() public view returns(uint) {
 
     return (counter_sum);
   }
- function getCurrentTime() public constant returns(uint)
+ function getCurrentTime() public view returns(uint)
   {
 
-       CurrentTime=now;
-      return CurrentTime;
+      return now;
   }
 
-  function () payable{
+  function () payable external{
   }
 
 }
