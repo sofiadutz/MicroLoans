@@ -5,7 +5,7 @@ contract microloan is Ownable {
 
   uint TimeStart; //time stamp of the block
   //constructor
-  function time() public payable {
+  function time() public payable{
       TimeStart=now;
 
   }
@@ -23,7 +23,7 @@ contract microloan is Ownable {
     string ID;
     
     uint deposit;
-    
+    uint sponsored_deposit;
     bool borrower;
     
 
@@ -67,7 +67,7 @@ contract microloan is Ownable {
   function init_members(string memory _ID) public{
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,address(0),address(0),address(0),address(0),address(0));
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,0,false,address(0),address(0),address(0),address(0),address(0));
       init_member_counter++;
     }
     else{
@@ -95,7 +95,7 @@ contract microloan is Ownable {
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,address(0),address(0),address(0),address(0));
+      link[_req_member]=member(now,count,_req_member,__ID,0,0,true,var1,address(0),address(0),address(0),address(0));
       link[var1].sponsorship = _req_member;
     }
     else if (count==2)
@@ -120,16 +120,12 @@ contract microloan is Ownable {
 
 
   }
-  function show_count(address _master_address) public view returns (uint) {
-
-    return (link[msg.sender].counter);
-  }
   
   // add members without recommenders
   function add_Lender(address _req_member, string memory __ID) public {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,false,address(0),address(0),address(0),address(0),address(0));
+  link[_req_member]=member(now,count,_req_member,__ID,0,0,false,address(0),address(0),address(0),address(0),address(0));
   }
   
 
@@ -140,6 +136,14 @@ contract microloan is Ownable {
     address(this).transfer(__amount);
     link[msg.sender].deposit += __amount;
     if(amount_borrowed[msg.sender]>0) {
+      link[link[msg.sender].sponsor_1].deposit += __amount/4;
+      link[link[msg.sender].sponsor_1].sponsored_deposit -= __amount/4;
+      link[link[msg.sender].sponsor_2].deposit += __amount/4;
+      link[link[msg.sender].sponsor_2].sponsored_deposit -= __amount/4;
+      link[link[msg.sender].sponsor_3].deposit += __amount/4;
+      link[link[msg.sender].sponsor_3].sponsored_deposit -= __amount/4;
+      link[link[msg.sender].sponsor_4].deposit += __amount/4;
+      link[link[msg.sender].sponsor_4].sponsored_deposit -= __amount/4;
       amount_borrowed[msg.sender]= amount_borrowed[msg.sender] - __amount;
       if(amount_borrowed[msg.sender]<0) {
         amount_borrowed[msg.sender]=0;
@@ -149,9 +153,14 @@ contract microloan is Ownable {
 
   }
   //shows individual deposit
-  function show_deposit(address _master_address) public view returns (uint) {
+  function show_deposit() public view returns (uint) {
 
     return (link[msg.sender].deposit);
+    
+    }
+  function show_sponsored_deposit() public view returns (uint) {
+
+    return (link[msg.sender].sponsored_deposit);
     
     }
     
@@ -190,6 +199,12 @@ contract microloan is Ownable {
   
 //To request money from the pool
   function request(uint _amount_) public{
+    if(amount_borrowed[msg.sender]>0){
+      revert('You are already in debt');
+    }
+    if (link[msg.sender].deposit <= 50000) {
+      revert('You dont have enough deposit. reach to 50000');
+    }
     amounts.push(_amount_);
     amount_map[_amount_] = msg.sender;
 
@@ -297,13 +312,17 @@ contract microloan is Ownable {
       if (recmd_share > link[link[temp_address].sponsor_4].deposit){
         revert('sponsor 4 problem');
       }
-
-      temp_address.transfer(amounts[w]);
+      uint interest_rate_integer = 4;
+      temp_address.transfer(amounts[w]*interest_rate_integer/100);
       amount_borrowed[msg.sender] = amounts[w];
       link[link[temp_address].sponsor_1].deposit -= recmd_share;
+      link[link[temp_address].sponsor_1].sponsored_deposit += recmd_share;
       link[link[temp_address].sponsor_2].deposit -= recmd_share;
+      link[link[temp_address].sponsor_2].sponsored_deposit += recmd_share;
       link[link[temp_address].sponsor_3].deposit -= recmd_share;
+      link[link[temp_address].sponsor_3].sponsored_deposit += recmd_share;
       link[link[temp_address].sponsor_4].deposit -= recmd_share;
+      link[link[temp_address].sponsor_4].sponsored_deposit += recmd_share;
       delete amounts[w];
       delete amount_map[amounts[w]];}
 
@@ -314,23 +333,23 @@ contract microloan is Ownable {
   }
 
 // shows deposits of recommenders
-  function show_recDepo(uint w) public view returns(uint,uint,uint,uint) {
-    address payable temp_address = address(uint160(amount_map[amounts[w]]));
-    return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
-  } 
+  // function show_recDepo(uint w) public view returns(uint,uint,uint,uint) {
+  //   address payable temp_address = address(uint160(amount_map[amounts[w]]));
+  //   return (link[link[temp_address].sponsor_1].deposit,link[link[temp_address].sponsor_2].deposit,link[link[temp_address].sponsor_3].deposit,link[link[temp_address].sponsor_4].deposit);
+  // } 
   
 //to withdraw deposit
   function withdraw_deposit(address _member) public {
     require(_member == msg.sender);
     uint amount = link[_member].deposit;
+    if (address(this).balance < amount){
+      revert('currently there is not enough money in the pool, try later');
+    }
     msg.sender.transfer(amount);
     link[msg.sender].deposit = link[msg.sender].deposit - amount;
 
 }
-  function show_Depo(address _master_address) public view returns (uint) {
 
-    return (link[_master_address].deposit);
-  } 
 
 //for lenders to withdraw their interest
   function withdraw_interest(address lender) public every_3_months {
@@ -347,10 +366,7 @@ contract microloan is Ownable {
   }
 
 
- function show_counter_sum() public view returns(uint) {
 
-    return (counter_sum);
-  }
  function getCurrentTime() public view returns(uint)
   {
 

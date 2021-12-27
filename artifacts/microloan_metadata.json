@@ -335,70 +335,7 @@
 			},
 			{
 				"constant": true,
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
-				"name": "show_Depo",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
-				"name": "show_count",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
 				"inputs": [],
-				"name": "show_counter_sum",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_master_address",
-						"type": "address"
-					}
-				],
 				"name": "show_deposit",
 				"outputs": [
 					{
@@ -413,30 +350,9 @@
 			},
 			{
 				"constant": true,
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "w",
-						"type": "uint256"
-					}
-				],
-				"name": "show_recDepo",
+				"inputs": [],
+				"name": "show_sponsored_deposit",
 				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					},
 					{
 						"internalType": "uint256",
 						"name": "",
@@ -543,10 +459,10 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0x5735396eaebb10c07a2ca956e54a6206b691fccb04550c35d289ac6dd21daaf7",
+			"keccak256": "0x769fd7fe6953d2fe9f2e585e0273f9d2d3e0e8222e5bfb8759f2efaafdcee6b6",
 			"urls": [
-				"bzz-raw://0cdf9ab47c707068b9b367ec572ca8cfe2dd3b61ae035f21fcb92d8d701f0e23",
-				"dweb:/ipfs/QmbAeQLprf3NGRhmZGveV5u6d5S1o18ppuvDedi33HXe2i"
+				"bzz-raw://24ab50d9af9a2f53f263f12c0b46d67abbfccd610cf72c943f3da44e95a773d7",
+				"dweb:/ipfs/QmPCwVNr9HNTUBAKEUDbngVoqbpn3yddEoh4xWJN7hbrhJ"
 			]
 		},
 		"ownable.sol": {
