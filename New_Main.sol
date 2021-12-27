@@ -31,6 +31,8 @@ contract microloan {
     address sponsor_2;
     address sponsor_3;
     address sponsor_4;
+    
+    address sponsorship
 
   }
  uint CurrentTime;
@@ -65,7 +67,7 @@ contract microloan {
   function init_members(string _ID) {
     user_ID[_ID]=msg.sender;
     if(init_member_counter <5){
-      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,0x1,0x2,0x3,0x4);
+      link[msg.sender]=member(now,4,msg.sender,_ID,0,false,0x1,0x2,0x3,0x4,0x5);
       init_member_counter++;
     }
     else{
@@ -93,21 +95,25 @@ contract microloan {
     if(count==1)
     {user_ID[__ID]=_req_member;
       var1=msg.sender;
-      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,0,0,0);
+      link[_req_member]=member(now,count,_req_member,__ID,0,true,var1,0,0,0,0);
+      link[var1].sponsorship = _req_member;
     }
     else if (count==2)
     {
       link[_req_member].sponsor_2=msg.sender;
+      link[var2].sponsorship = _req_member;
     }
     else if (count==3)
     {
       link[_req_member].sponsor_3=msg.sender;
+      link[var3].sponsorship = _req_member;
     }
 
     else if (count==4)
     {
       link[_req_member].sponsor_4=msg.sender;
       link[_req_member].counter=4;
+      link[var4].sponsorship = _req_member;
     }
 
     count++;
@@ -123,7 +129,7 @@ contract microloan {
   function add_Lender(address _req_member, string __ID) {
   onlynew(_req_member);
   user_ID[__ID]=_req_member;
-  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0);
+  link[_req_member]=member(now,count,_req_member,__ID,0,false,0,0,0,0,0);
   }
   
 
@@ -157,11 +163,12 @@ contract microloan {
   }
 
     //show ID refrences of a member
-  function list_refrences(address _master_address) constant returns (string,string,string,string) {
+  function list_references(address _master_address) constant returns (string,string,string,string) {
 
-    return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID);
-
+    return (link[link[_master_address].sponsor_1].ID,link[link[_master_address].sponsor_2].ID,link[link[_master_address].sponsor_3].ID,link[link[_master_address].sponsor_4].ID); 
   }
+  
+  
   uint[] amounts;
 //requested money mapped to member address
   mapping (uint => address) amount_map;
