@@ -9,6 +9,16 @@ The aim for this platform is to create an environment where medium/small-sized b
 For this reason, we introduced a blockchain solution that focuses on allowing to grant microloans through the consent from previous members who are accountable for the borrower. Indeed, an individual can submit a loan request only through the approval of other <strong>four members</strong>. These act as guarantors and are responsible for the non-repayment of loans of the new entrant, and eventually have to split the loan between them if the borrower defaults. More specifically, their deposits are temporarely blocked when this event occurs, and they are later available when the borrower repays. Hence, the mechanism of introducing peer pressure through guarantor’s accountability allows requesting loans without providing any <strong>collateral</strong>.
 </div>
 
+## Financial Inclusion
+
+The project falls into a bigger theme in finance, which is increasingly gaining importance: financial inclusion.
+Financial Inclusion is defined as the “ease of access, availability and usage of the formal financial system by all members of the economy” (Sarma, 2008).
+One of the main indicators of financial inclusion is the possibility for individuals to hold a personal financial account.
+As of 2018, 1.7 billion adults were unbanked globally, of which 56% were women, and 50% fell into the poorest 40 percent of households in the economy, according to the Global Findex Database 2017 (Demirgu ̈ ̧c-Kunt et al., 2018). The paper also provides the main reasons for not holding a financial institution account, the first being too little money to start an account, the second distance or cost, and lastly having another family member already holding an account. Moreover, clients asking for small, short-term loans have been historically excluded from traditional bank services because of the high costs associated with them and the disincentives for companies to offer short-term solutions for limited amounts (Hoffmann 2021). Financial inclusion is beneficial for both the single individual and the society at a macro level. Omar (2020) proves that financial inclusion contributes to the reduction of poverty rates and income inequality in developing countries.
+Moreover, as evidenced in Levine (2005), financial inclusion has a positive impact on the economy as a whole through the production of information, allocation of capital, monitoring of investment, mobilization of savings, and facilitation of trading. According to Barajas (2020), greater financial inclusion is positively correlated with greater financial development and control for the level of financial depth.
+A positive improvement to financial inclusion can be driven by fintech development, which offers new ways to expand the inclusion and paves the way for new forms of financial profiling for poor households (Gabor, 2017).
+In particular, blockchain technology can, directly and indirectly, positively impact financial inclusion, especially through the reduction of costs for opening checking accounts (Dragos 2017).
+
 ## Protocol
 
 
