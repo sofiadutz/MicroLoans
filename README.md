@@ -1,17 +1,17 @@
 # MicroLoans
 
-Microloans is a contract for blockchain based peer-to-peer lending. 
+Microloans is a contract for **blockchain** based **peer-to-peer lending**. 
 
 <div style="text-align: justify">
-The platform will be based on the permissionless and public Ethereum blockchain, making it available to everyone who meets the requirement to enter and produce transactions. The platform is entirely decentralized and transparent for every user who joins the pool. To be more precise, we can resemble our platform with a crowdfunding contract that gives everyone equal access to join and make changes on the chain. 
-The aim for this platform is to create an environment where medium/small-sized businesses can afford micro-loans thanks to the peer risk-free network. This, in the historical financial world, has always been avoided, due to high costs and the risks related to the present asymmetries is needed. Clients asking for small, short-term loans have historically been excluded due to the high fixed costs associated with transaction fees and administrative ones. The cost of acquiring clients compared to the size of the loan is drastically higher in microfinance compared to regular commercial loans, and the profits returning from these small transactions, including the acquisition of a customer, don’t compensate for the risks associated with the asymmetries with this practice and the relative costs. The solution we proposed to this problem lays in adopting blockchain, due to the benefits this decision would lend to the platform.
+The platform will be based on the **permissionless and public Ethereum blockchain**, making it available to everyone who meets the requirement to enter and produce transactions. The platform is entirely decentralized and transparent for every user who joins the pool. To be more precise, we can resemble our platform with a **crowdfunding contract** that gives everyone equal access to join and make changes on the chain. 
+The aim for this platform is to create an environment where medium/small-sized businesses can afford **micro-loans** thanks to the peer risk-free network. This, in the historical financial world, has always been avoided, due to high costs and the risks related to the present asymmetries is needed. Clients asking for small, short-term loans have historically been excluded due to the high fixed costs associated with transaction fees and administrative ones. The cost of acquiring clients compared to the size of the loan is drastically higher in microfinance compared to regular commercial loans, and the profits returning from these small transactions, including the acquisition of a customer, don’t compensate for the risks associated with the asymmetries with this practice and the relative costs. The solution we proposed to this problem lays in adopting blockchain, due to the benefits this decision would lend to the platform.
 
 For this reason, we introduced a blockchain solution that focuses on allowing to grant microloans through the consent from previous members who are accountable for the borrower. Indeed, an individual can submit a loan request only through the approval of other 4 members. These act as guarantors and are responsible for the non-repayment of loans of the new entrant, and eventually have to split the loan between them if the borrower defaults. Their deposots are temporarely  Hence, the mechanism of introducing peer pressure through guarantor’s accountability allows requesting loans without providing any collateral.
 </div>
 
 ## Perspectives and future developments: Credit system & Social features
 
-> 1. Automize credit system
+> 1. **Automize credit system**
 >>    <ul>
 >>    To motivate active usage and give credit record reference for other financial institutes, credit system could be introduced based on user’s behavior. Rules for example:
 >>      <ul>
@@ -36,7 +36,7 @@ For this reason, we introduced a blockchain solution that focuses on allowing to
 
 
 
-> 2. Optimize social features
+> 2. **Optimize social features**
 >>    <ul>
 >>    Social features could lead to more diverse user groups, and customize their own type of financial aids, either charitable or profit-oriented.
 >>      <ul>
