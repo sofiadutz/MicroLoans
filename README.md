@@ -46,6 +46,19 @@ As of the current landscape, different solutions are available in the market. Th
 Blockchain-based lending platforms are companies such as <strong>SALT</strong> and <strong>BlockFi</strong> that offer cash loans leveraging on digital assets, i.e. Bitcoin, Ether or Dogecoin. While being able to lower the financial fees and avoiding having an impact on the borrower’s credit score, such a structure is in practice performing banking activities without regulations or license. Our platform, on the other hand, allows users to access funding opportunities without the need to provide any financial collateral, whether it be a traditional one or cryptocurrencies, like in our competitor’s case. Hence, their lending mechanism wouldn’t solve our target’s specific problems.
 <p>
 On the other hand, peer-to-peer lending platforms such as <strong>Liquid Mortgage</strong> fail to provide significant and sustainable incentives for the service. The Liquid Mortgage platform directly connects borrowers with lenders. The latter have smart contract abilities and real-time transaction data. However, we foresee a substantial issue when considering its ability to scale: if anonymity is guaranteed, the matching between lenders and borrowers would be frictious.</p>
+ 
+## Revenue streams 
+ 
+So far, the first thing in order to guarantee future revenues is to create the largest network possible. Thus, we can’t foresee any income for the first period of activity, and won’t apply any intermediary fees to anyone joining the network. We may even need to guarantee ourselves for the loan transactions, since in the first phase, lenders could be reluctant to act as guarantors for some unknown peers.
+After having reached a critical mass point for the network, beyond which we think the system will go ahead by itself, we might start thinking about applying fees to the interests of the lenders, which will be our main revenues. Then, we could start thinking about some parallel incomes, such as lending ourselves loans and cashing out the whole interests part.
+We may even think about selling our blockchain- and smart contract-based solution to retail banks which miss this microloans technology in their revenue stream. The service can be made available in a “cost-effective, safe and scalable manner, unlike the currently existing - and oftentimes unlawful - payday loans” (Hoffmann, 2021).
+ 
+## Architecture
+ 
+1. New members enter the network and are admitted into the group of borrowers if validated by other four existing members. Other memebers, who act solely as lenders, can enter directly. 
+2. Users deposit money in the pool and can withdraw the interest generated from it every three months.
+3. Borrowers can request money from the pool if they were sponsored by four existing members when entering the network and if they deposited some amount of money in the pool. Moreover - since the amount requested is covered by the overall deposits of the four recommenders - when money is transfered to the borrower, one fourth of the amount is blocked in the deposits of each recommender and is made available for them to withdraw when the loan is repaied by the borrower.
+
 
 ## Perspectives and future developments: Credit system & Social features
 
