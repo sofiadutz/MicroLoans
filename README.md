@@ -85,3 +85,13 @@ On the other hand, peer-to-peer lending platforms such as <strong>Liquid Mortgag
 >>   <li> Community reward: Recommenders/lenders in specific pool can support SMEs, customize contract with lower interest plus long-term community rewards, like 
 >>   laundry store coupon, bistro discount in the future.
 >> </ul>
+
+
+## The team
+
+3036116 SOFIA DUTTO
+3151409 XIAOXU LIU
+3197141 NOEL KLARBERG
+3196379 ELKHETTAR MAMOUN
+3063791 ANNA BREGOLA
+3143763 KASRA ZAMANIAN
