@@ -170,7 +170,12 @@ contract microloan is Ownable {
 
     return (amount_borrowed[msg.sender]);
     
-    }   
+    }  
+  function show_sponsorship() public view returns (address) {
+
+    return (link[msg.sender].sponsorship);
+    
+    } 
     //shows the money in the pool
   function getPoolMoney() public view returns (uint){
 
@@ -302,7 +307,7 @@ contract microloan is Ownable {
 
 //Pay the members the requested loan amount
 // TODO: add every_3_months
-  function pay_loan() external onlyOwner {
+  function pay_loan() external payable onlyOwner {
 
     for(uint w=0; w <= counter_sum; w++ ){
       address payable temp_address = address(uint160(amount_map[amounts[w]]));

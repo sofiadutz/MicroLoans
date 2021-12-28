@@ -305,8 +305,8 @@
 				"inputs": [],
 				"name": "pay_loan",
 				"outputs": [],
-				"payable": false,
-				"stateMutability": "nonpayable",
+				"payable": true,
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -372,6 +372,21 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "show_sponsorship",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
 					}
 				],
 				"payable": false,
@@ -474,10 +489,10 @@
 	},
 	"sources": {
 		"New_Main.sol": {
-			"keccak256": "0xb1ce76a745defcbc050cde91d16d28dd4d859eb52bb281f80adfb0124ec3360e",
+			"keccak256": "0x91e4a308ec1c95b0a6c96049ddc604058ef46cd9d7ac30d46f99c9ab8343b00d",
 			"urls": [
-				"bzz-raw://ce5322d88d871b876a180ea754cd5fc137f3b8584f69a3413704951d4a4145d9",
-				"dweb:/ipfs/Qmaj14qXDNkAqqWDsK9MRwTQ4EHpkLthAHpjLGs8bV8YrT"
+				"bzz-raw://97abce05aa08fb0aba2b04ce22b4adfd49e698ed1d64bc8c49dd900f3ccb8fe2",
+				"dweb:/ipfs/QmdLrZrT11kbuN1tc9XH9jM29jAwRbdi7fEjVA8Xrqg4Vb"
 			]
 		},
 		"ownable.sol": {
